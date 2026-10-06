@@ -84,6 +84,7 @@
         <div class="container">
             <h1> {{ $username }} </h1>
             <p> {{ $last_login }} </p>
+
         </div>
     </section>
 
