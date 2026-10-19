@@ -157,15 +157,20 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Form Pertanyaan</h5>
-
+                        @csrf
                         @if (session('info'))
-                            <div class="alert alert-info">
+                            <div class="alert alert-success"
+                                style="padding: 15px; background-color: #d4edda; color: #155724; border-radius: 5px; margin: 15px 0;">
                                 {!! session('info') !!}
                             </div>
-                            <a href="/question/store"></a>
+
+                            <script>
+                                setTimeout(function(){
+                                    window.location.href = '{{ url('/home-question-respon') }}';
+                                }, 2500);
+                            </script>
                         @endif
                         <form action="{{ route('question.store') }}" method="POST">
-                            @csrf
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama</label>
                                 <input type="text" class="form-control" name="nama">
