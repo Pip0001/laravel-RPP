@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,3 +29,5 @@ Route::resource('pelanggan', PelangganController::class);
 Route::resource('karyawan', KaryawanController::class);
 
 Route::get('karyawan/lihatCv/{id}', [KaryawanController::class, 'lihatCv'])->name('karyawan.lihatCv');
+
+Route::resource('user', UserController::class);
