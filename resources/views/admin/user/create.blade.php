@@ -35,8 +35,13 @@
                                 <div class="col-lg-4 col-sm-6">
                                     <!-- Name -->
                                     <div class="mb-3">
-                                        <label for="first_name" class="form-label">Name</label>
-                                        <input type="text" id="name" name="name" class="form-control" required>
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" id="name"
+                                            class="form-control @error('name') is-invalid @enderror" name="name"
+                                            value="{{ old('name') }}">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                 </div>
@@ -45,7 +50,12 @@
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" name="email" class="form-control" required>
+                                        <input type="email" id="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email') }}">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -53,10 +63,21 @@
 
 
                                     <!-- Password -->
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Password</label>
-                                        <input type="text" id="password" name="password" class="form-control">
-                                    </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" id="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password">
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Confirm Password -->
+                                <div class="mb-3">
+                                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                    <input type="password" id="password_confirmation" class="form-control"
+                                        name="password_confirmation">
+                                </div>
 
                                     <!-- Buttons -->
                                     <div class="">

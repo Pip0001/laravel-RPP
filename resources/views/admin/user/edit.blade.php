@@ -30,50 +30,56 @@
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        <form action="{{route('user.update', $dataUser->user_id)}}" method="POST">
+                        <form action="{{route('user.update', $dataUser->id)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row mb-4">
                                 <div class="col-lg-4 col-sm-6">
                                     <!-- Name -->
                                     <div class="mb-3">
-                                        <label for="first_name" class="form-label">Name</label>
-                                        <input type="text" id="first_name" name="first_name" class="form-control" value="{{ $dataUser->name }}" required>
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" id="name"
+                                            class="form-control @error('name') is-invalid @enderror" name="name"
+                                            value="{{ old('name') }}">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
-                                    <!-- Last Name -->
-                                    <div class="mb-3">
-                                        <label for="last_name" class="form-label">Last name</label>
-                                        <input type="text" id="last_name" name="last_name" class="form-control" value="{{ $dataUser->last_name }}" required>
-                                    </div>
                                 </div>
 
                                 <div class="col-lg-4 col-sm-6">
-                                    <!-- Birthday -->
-
-                                    <!-- Gender -->
-                                    <div class="mb-3">
-                                        <label for="gender" class="form-label">Gender</label>
-                                        <select id="gender" name="gender" class="form-select">
-                                            <option value="">-- Pilih --</option>
-                                            <option value="Male" {{$dataUser->gender == 'Male' ? 'selected' : ''}}>Male</option>
-                                            <option value="Female" {{$dataUser->gender == 'Female' ? 'selected' : ''}}>Female</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-sm-12">
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" name="email" class="form-control" value="{{ $dataUser->email }}" required>
+                                        <input type="email" id="email"
+                                            class="form-control @error('email') is-invalid @enderror" name="email"
+                                            value="{{ old('email') }}">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
+                                </div>
 
-                                    <!-- Phone -->
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Password</label>
-                                        <input type="text" id="phone" name="phone" class="form-control" value="{{ $dataUser->password }}">
-                                    </div>
+
+                                <div class="col-lg-4 col-sm-12">
+                                <!-- Password -->
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password
+                                        <small class="text-muted">(kosongkan jika tidak diubah)</small></label>
+                                    <input type="password" id="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password">
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Confirm Password -->
+                                <div class="mb-3">
+                                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                                    <input type="password" id="password_confirmation" class="form-control"
+                                        name="password_confirmation">
+                                </div>
 
                                     <!-- Buttons -->
                                     <div class="">
