@@ -35,6 +35,7 @@
                                     <tr>
                                         <th class="border-0">Name</th>
                                         <th class="border-0">Email</th>
+                                        <th class="border-0">Role</th>
                                         <th class="border-0 rounded-end">Action</th>
                                     </tr>
                                 </thead>
@@ -43,6 +44,7 @@
                                         <tr>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
+                                            <td>{{ $item->role }}</td>
                                             <td>
                                                 <a href="{{route('user.edit', $item->id)}}" class="btn btn-info btn-sm">
                                                     <svg  class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
