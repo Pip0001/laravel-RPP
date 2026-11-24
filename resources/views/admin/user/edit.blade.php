@@ -40,10 +40,18 @@
                                         <label for="name" class="form-label">Name</label>
                                         <input type="text" id="name"
                                             class="form-control @error('name') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}">
+                                            value="{{ $dataUser->name }}">
                                         @error('name')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="role" class="form-label">Role</label>
+                                        <select name="role" id="role" class="form-select">
+                                            <option value="pelanggan" {{$dataUser->role == 'pelanggan' ? 'selected' : ''}} >Pelanggan</option>
+                                            <option value="admin" {{$dataUser->role == 'admin' ? 'selected' : ''}} >Admin</option>
+                                            <option value="owner" {{$dataUser->role == 'owner' ? 'selected' : ''}} >Owner</option>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -54,13 +62,12 @@
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" id="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
-                                            value="{{ old('email') }}">
+                                            value="{{ $dataUser->email }}">
                                         @error('email')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
-
 
                                 <div class="col-lg-4 col-sm-12">
                                 <!-- Password -->

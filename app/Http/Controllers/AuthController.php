@@ -31,13 +31,13 @@ class AuthController extends Controller
             return redirect()->intended(route('dashboard'))
             ->with('success', 'Login berhasil!');
         }
-        if ($user && Hash::check($request->password, $user->password)) {
-				/** sesssion mulai dibuat **/
-		    Auth::login($user);
-		    $request->session()->regenerate();
+        // if ($user && Hash::check($request->password, $user->password)) {
+		// 		/** sesssion mulai dibuat **/
+		//     Auth::login($user);
+		//     $request->session()->regenerate();
 
-		    return redirect()->intended(route('dashboard'));
-		}
+		//     return redirect()->intended(route('dashboard'));
+		// }
 
         return back()
             ->withErrors(['email' => 'Email atau password salah'])

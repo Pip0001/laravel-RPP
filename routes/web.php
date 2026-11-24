@@ -17,11 +17,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('question/store', [QuestionController::class, 'store'])
     ->name('question.store');
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard')->middleware('checkislogin');
 
 Route::get('/home-question-respon', [QuestionController::class, 'respon']);
 
-Route::resource('pelanggan', PelangganController::class);
+// Route::resource('pelanggan', PelangganController::class);
 
 // cv
 // Route::get('cv', [CvController::class, 'index'])->name('dashboard');
@@ -30,7 +31,7 @@ Route::resource('karyawan', KaryawanController::class);
 
 Route::get('karyawan/lihatCv/{id}', [KaryawanController::class, 'lihatCv'])->name('karyawan.lihatCv');
 
-Route::resource('user', UserController::class);
+// Route::resource('user', UserController::class);
 
 use App\Http\Controllers\AuthController;
 
@@ -39,3 +40,13 @@ Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('auth.logout');
+
+Route::middleware(['auth'])->group(function () {
+    Route::middleware(['checkrole:owner'])->group(function () {
+        Route::resource('user', UserController::class);
+    });
+
+    Route::middleware(['checkrole:owner,admin'])->group(function () {
+        Route::resource('pelanggan', PelangganController::class);
+    });
+});

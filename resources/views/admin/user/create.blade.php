@@ -43,7 +43,14 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-
+                                    <div class="mb-3">
+                                        <label for="role" class="form-label">Role</label>
+                                        <select name="role" id="role" class="form-select">
+                                            <option value="pelanggan">Pelanggan</option>
+                                            <option value="admin">Admin</option>
+                                            <option value="owner">Owner</option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-4 col-sm-6">
